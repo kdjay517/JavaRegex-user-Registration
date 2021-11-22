@@ -16,4 +16,14 @@ public class UserDetails {
 			System.out.println("InValid");
 		}
 	}
+	
+	public void lastName(String lastName) {
+		regex = "^[A-Z]{1}[a-z]{2,}$";
+		Pattern p = Pattern.compile(lastName);
+		Matcher m = p.matcher(lastName);
+		if (m.find() && m.group().equals(lastName)) {
+			System.out.println("Valid");
+		}else
+			System.out.println("InValid");
+	}
 }
