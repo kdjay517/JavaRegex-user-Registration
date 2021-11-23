@@ -28,7 +28,7 @@ public class UserDetails {
 	}
 
 	public void emailAddress(String mail) {
-		regex = "^[A-Za-z0-9]{3}[*-+_0-9a-zA-Z]*@[0-9a-zA-Z]*([.][a-zA-Z]+)+$";
+		regex = "^[A-Za-z0-9]+[*-+_0-9a-zA-Z]*@[0-9a-zA-Z]*([.][a-zA-Z]+)+$";
 		Pattern p = Pattern.compile(regex);
 		Matcher m = p.matcher(mail);
 		if (m.find() && m.group().equals(mail)) {
