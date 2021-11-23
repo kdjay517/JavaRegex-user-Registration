@@ -10,7 +10,10 @@ public class RegexUserMain {
 
 	public void choice() {
 		while (true) {
-			System.out.println("Enter 1 To Check First Name\n" + "Enter 2 To Check Last Name\n"+ "Enter 0 To Exit");
+			System.out.println("Enter 1 To Check First Name\n" + 
+								"Enter 2 To Check Last Name\n"+
+								"Enter 3 to Check email id\n"+ 
+								"Enter 0 To Exit");
 			int choice = sc.nextInt();
 			switch (choice) {
 				case 1:
@@ -18,6 +21,9 @@ public class RegexUserMain {
 					break;
 				case 2:
 					regexUserRegistration.userLastName();
+					break;
+				case 3:
+					regexUserRegistration.useremailAddress();
 					break;
 				case 0:
 					System.exit(0);

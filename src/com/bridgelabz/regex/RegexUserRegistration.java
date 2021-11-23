@@ -9,13 +9,19 @@ public class RegexUserRegistration {
 
     public void userFirstName() {
         System.out.println("Enter Your First Name : ");
-        String firstName = sc.next();
+        String firstName = sc.nextLine();
         userDetails.firstName(firstName);
     }
     
     public void userLastName() {
     	System.out.println("Enter Your Last Name:");
-    	String lastName = sc.next();
+    	String lastName = sc.nextLine();
     	userDetails.lastName(lastName);
+    }
+    
+    public void useremailAddress() {
+    	System.out.println("Enter Your Email Address:");
+    	String email = sc.nextLine();
+    	userDetails.emailAddress(email);
     }
 }
