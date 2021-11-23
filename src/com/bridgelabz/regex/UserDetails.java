@@ -46,4 +46,14 @@ public class UserDetails {
 		}else
 			System.out.println("InValid");
 	}
+
+	public void passwordRule1(String pass1) {
+		regex = "^[a-z]{8,}$";
+		Pattern p = Pattern.compile(regex);
+		Matcher m = p.matcher(pass1);
+		if (m.find() && m.group().equals(pass1)) {
+			System.out.println("Valid");
+		}else
+			System.out.println("InValid");
+	}
 }

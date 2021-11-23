@@ -30,4 +30,10 @@ public class RegexUserRegistration {
 		String number = sc.nextLine();
 		userDetails.mobileNumber(number);
 	}
+	
+	public void userPasswordrule1() {
+		System.out.println("Enter password with minumum 8 characters");
+		String pass1 = sc.next();
+		userDetails.passwordRule1(pass1);
+	}
 }
