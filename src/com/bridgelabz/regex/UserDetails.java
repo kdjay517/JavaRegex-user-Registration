@@ -76,4 +76,14 @@ public class UserDetails {
 		} else
 			System.out.println("InValid");
 	}
+
+	public void passwordRule4(String pass4) {
+		regex = "(?=.*[0-9])(?=.*[A-Z])(?=.*[!@#&()–[{}]:;',?/*~$^+=<>])[a-zA-Z0-9!@#&()–[{}]:;',?/*~$^+=<>].{8,}$";
+		Pattern p = Pattern.compile(regex);
+		Matcher m = p.matcher(pass4);
+		if (m.find() && m.group().equals(pass4)) {
+			System.out.println("Valid");
+		} else
+			System.out.println("InValid");
+	}
 }

@@ -17,6 +17,7 @@ public class RegexUserMain {
 								"Enter 5 to check password rule1\n"+
 								"Enter 6 to check password rule2\n"+
 								"Enter 7 to check password rule3\n"+
+								"Enter 8 to check password rule4\n"+
 								"Enter 0 To Exit");
 			int choice = sc.nextInt();
 			switch (choice) {
@@ -40,6 +41,9 @@ public class RegexUserMain {
 					break;
 				case 7:
 					regexUserRegistration.userPasswordrule3();
+					break;
+				case 8:
+					regexUserRegistration.userPasswordrule4();
 					break;
 				case 0:
 					System.exit(0);
