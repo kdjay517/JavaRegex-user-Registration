@@ -48,4 +48,10 @@ public class RegexUserRegistration {
 		String pass3 = sc.next();
 		userDetails.passwordRule3(pass3);
 	}
+	
+	public void userPasswordrule4() {
+		System.out.println("Enter password with minumum 8 characters(with atleat one special symbol)");
+		String pass4 = sc.next();
+		userDetails.passwordRule4(pass4);
+	}
 }
