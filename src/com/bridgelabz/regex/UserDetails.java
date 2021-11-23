@@ -27,11 +27,21 @@ public class UserDetails {
 			System.out.println("InValid");
 	}
 
-	public void emailAddress(String email) {
-		regex = "^[a-zA-Z0-9]{3}([.+-_0-9a-zA-Z])*@[0-9a-zA-Z]*([.][a-zA-z]+)+$";
+	public void emailAddress(String mail) {
+		regex = "^[A-Za-z0-9]{3}[*-+_0-9a-zA-Z]*@[0-9a-zA-Z]*([.][a-zA-Z]+)+$";
 		Pattern p = Pattern.compile(regex);
-		Matcher m = p.matcher(email);
-		if (m.find() && m.group().equals(email)) {
+		Matcher m = p.matcher(mail);
+		if (m.find() && m.group().equals(mail)) {
+			System.out.println("Valid");
+		}else
+			System.out.println("InValid");
+	}
+
+	public void mobileNumber(String number) {
+		regex = "^[91]{2}[\\s][6-9][0-9]{9}$";
+		Pattern p = Pattern.compile(regex);
+		Matcher m = p.matcher(number);
+		if (m.find() && m.group().equals(number)) {
 			System.out.println("Valid");
 		}else
 			System.out.println("InValid");
