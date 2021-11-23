@@ -40,6 +40,12 @@ public class RegexUserRegistration {
 	public void userPasswordrule2() {
 		System.out.println("Enter password with minumum 8 characters(with atleat one uppercase)");
 		String pass2 = sc.next();
-		userDetails.passwordRule1(pass2);
+		userDetails.passwordRule2(pass2);
+	}
+
+	public void userPasswordrule3() {
+		System.out.println("Enter password with minumum 8 characters(with atleat one digit)");
+		String pass3 = sc.next();
+		userDetails.passwordRule3(pass3);
 	}
 }

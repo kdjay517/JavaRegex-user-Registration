@@ -66,4 +66,14 @@ public class UserDetails {
 		} else
 			System.out.println("InValid");
 	}
+
+	public void passwordRule3(String pass3) {
+		regex = "(?=.*[0-9])(?=.*[A-Z])[A-Za-z0-9]{8,}$";
+		Pattern p = Pattern.compile(regex);
+		Matcher m = p.matcher(pass3);
+		if (m.find() && m.group().equals(pass3)) {
+			System.out.println("Valid");
+		} else
+			System.out.println("InValid");
+	}
 }
