@@ -4,11 +4,12 @@ import java.util.Scanner;
 
 public class RegexUserMain {
 
+	UserDetails user = new UserDetails();
 	RegexUserRegistration regexUserRegistration = new RegexUserRegistration();
 	Scanner sc = new Scanner(System.in);
 	static final int EXIT_VALUE = 3;
 
-	public void choice() {
+	public void choice() throws Exception {
 		while (true) {
 			System.out.println("Enter 1 To Check First Name\n" + 
 								"Enter 2 To Check Last Name\n"+
@@ -18,6 +19,7 @@ public class RegexUserMain {
 								"Enter 6 to check password rule2\n"+
 								"Enter 7 to check password rule3\n"+
 								"Enter 8 to check password rule4\n"+
+								"Enter 9 to check different mails\n"+
 								"Enter 0 To Exit");
 			int choice = sc.nextInt();
 			switch (choice) {
@@ -45,6 +47,9 @@ public class RegexUserMain {
 				case 8:
 					regexUserRegistration.userPasswordrule4();
 					break;
+				case 9:
+					regexUserRegistration.mailCheckker();;
+					break;
 				case 0:
 					System.exit(0);
 					break;
@@ -55,10 +60,11 @@ public class RegexUserMain {
 		}
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		System.out.println("\n Welcome to the User Registration program by Regex \n");
 		RegexUserMain regexUserMain = new RegexUserMain();
 		regexUserMain.choice();
 		regexUserMain.sc.close();
+		
 	}
 }
