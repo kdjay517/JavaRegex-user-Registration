@@ -1,5 +1,10 @@
 package com.bridgelabz.regex;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -28,7 +33,7 @@ public class UserDetails {
 	}
 
 	public void emailAddress(String mail) {
-		regex = "^[A-Za-z0-9]+[*-+_0-9a-zA-Z]*@[0-9a-zA-Z]*([.][a-zA-Z]+)+$";
+		regex = "^[A-Za-z0-9]+([.+-_][0-9a-zA-Z])*[@]([0-9a-zA-Z])+[.][a-zA-z]{2,3}([.][a-zA-z]{2,3})?$";
 		Pattern p = Pattern.compile(regex);
 		Matcher m = p.matcher(mail);
 		if (m.find() && m.group().equals(mail)) {

@@ -1,6 +1,11 @@
 package com.bridgelabz.regex;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.PrintWriter;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class RegexUserRegistration {
 
@@ -53,5 +58,23 @@ public class RegexUserRegistration {
 		System.out.println("Enter password with minumum 8 characters(with atleat one special symbol)");
 		String pass4 = sc.next();
 		userDetails.passwordRule4(pass4);
+	}
+	
+	public void mailCheckker() throws Exception {
+		String regex;
+		regex = "^[A-Za-z0-9]+([.+-_][0-9a-zA-Z])*[@]([0-9a-zA-Z])+[.][a-zA-z]{2,3}([.][a-zA-z]{2,3})?$";
+		Pattern p = Pattern.compile(regex);
+		PrintWriter pw = new PrintWriter("C:\\Users\\91897\\Desktop\\Projects\\Learning_path\\RFT_JAVA_80\\JavaRegex-user-Registration\\src\\com\\bridgelabz\\regex\\sampleidresult");
+		BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\91897\\Desktop\\Projects\\Learning_path\\RFT_JAVA_80\\JavaRegex-user-Registration\\src\\com\\bridgelabz\\regex\\samplemails"));
+		String line = br.readLine();
+		while (line != null ) {
+			Matcher m = p.matcher(line);
+			if(m.find()) {
+				pw.println(m.group()+"---->Valid");
+			}
+			line = br.readLine();
+		}
+		pw.close();
+		br.close();
 	}
 }
