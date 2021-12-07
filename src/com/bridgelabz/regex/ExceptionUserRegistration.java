@@ -3,7 +3,7 @@ package com.bridgelabz.regex;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class UserRegistration {
+public class ExceptionUserRegistration {
 	public String regex;
 
 	public boolean userFirstName(String firstName) throws UserRegistrationException {
