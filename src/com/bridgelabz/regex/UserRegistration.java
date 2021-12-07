@@ -1,107 +1,86 @@
 package com.bridgelabz.regex;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.PrintWriter;
-import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class UserRegistration {
+	public String regex;
 
-    Scanner sc = new Scanner(System.in);
-    public String regex;
-
-	public void userFirstName() {
-		System.out.println("Enter Your First Name(with first letter capital) : ");
-		while (true) {
-			String firstName = sc.nextLine();
-			regex = "^[A-Z]{1}[a-z]{2,}$";
+	public boolean userFirstName(String firstName) throws UserRegistrationException {
+		regex = "^[A-Z]{1}[a-z]{2,}$";
+		try {
 			Pattern p = Pattern.compile(regex);
+
+			if (firstName.isEmpty())
+				throw new UserRegistrationException("Please enter valid FIRST NAME!",
+						UserRegistrationException.ExceptionType.INVALID_FIRST_NAME);
 			Matcher m = p.matcher(firstName);
-			if (m.find() && m.group().equals(firstName)) {
-				System.out.println("Valid");
-				break;
-			}
-			System.out.println("InValid");
+			return (m.find() && m.group().equals(firstName));
+		} catch (Exception e) {
+			throw new UserRegistrationException("Please enter valid FIRST NAME!",
+					UserRegistrationException.ExceptionType.INVALID_FIRST_NAME);
 		}
-	}
-        
-    public void userLastName() {
-    	System.out.println("Enter Your Last Name(with first letter capital):");
-    	while(true) {
-        	String lastName = sc.nextLine();
-        	regex = "^[A-Z]{1}[a-z]{2,}$";
-    		Pattern p = Pattern.compile(regex);
-    		Matcher m = p.matcher(lastName);
-    		if (m.find() && m.group().equals(lastName)) {
-    			System.out.println("Valid");
-    			break;
-    		}
-    		System.out.println("InValid");
-    	}
-    }
-
-	public void useremailAddress() {
-		System.out.println("Enter Your Mail Address(format of abc.xyz@bl.co.in )");
-		while(true){
-			String mail = sc.nextLine();
-			regex = "^[A-Za-z0-9]+([.+-_][0-9a-zA-Z])*[@]([0-9a-zA-Z])+[.][a-zA-z]{2,3}([.][a-zA-z]{2,3})?$";
-			Pattern p = Pattern.compile(regex);
-			Matcher m = p.matcher(mail);
-			if (m.find() && m.group().equals(mail)) {
-				System.out.println("Valid");
-				break;
-			} 
-			System.out.println("InValid");
-		}	
 	}
 
-	public void userMobielNumber() {
-		System.out.println("Enter your Mobiel Number");
-		while(true){
-			String number = sc.nextLine();
-			regex = "^([+])?[91]{2}[\\s]?[6-9][0-9]{9}$";
+	public boolean userLastName(String lastName) throws UserRegistrationException {
+		regex = "^[A-Z]{1}[a-z]{2,}$";
+		try {
 			Pattern p = Pattern.compile(regex);
-			Matcher m = p.matcher(number);
-			if (m.find() && m.group().equals(number)) {
-				System.out.println("Valid");
-				break;
-			} 
-			System.out.println("InValid");
+
+			if (lastName.isEmpty())
+				throw new UserRegistrationException("Please enter valid LAST NAME!",
+						UserRegistrationException.ExceptionType.INVALID_LAST_NAME);
+			Matcher m = p.matcher(lastName);
+			return (m.find() && m.group().equals(lastName));
+		} catch (Exception e) {
+			throw new UserRegistrationException("Please enter valid LAST NAME!",
+					UserRegistrationException.ExceptionType.INVALID_LAST_NAME);
 		}
 	}
-	
-	public void userPassword() {
-		System.out.println("Enter password with minumum 8 characters(with atleat one capital letter,digit and special symbol)");
-		while(true) {
-			String password = sc.nextLine();
-			regex = "(?=.*[0-9])(?=.*[A-Z])(?=.*[!@#&()–[{}]:;',?/*~$^+=<>])[a-zA-Z0-9!@#&()–[{}]:;',?/*~$^+=<>].{8,}$";
-			Pattern p = Pattern.compile(regex);
-			Matcher m = p.matcher(password);
-			if (m.find() && m.group().equals(password)) {
-				System.out.println("Valid");
-				break;
-			}
-			System.out.println("InValid");
-		}
-	}
-	
-	public void mailCheckker() throws Exception {
-		String regex;
+
+	public boolean useremailAddress(String email) throws UserRegistrationException {
 		regex = "^[A-Za-z0-9]+([.+-_][0-9a-zA-Z])*[@]([0-9a-zA-Z])+[.][a-zA-z]{2,3}([.][a-zA-z]{2,3})?$";
-		Pattern p = Pattern.compile(regex);
-		PrintWriter pw = new PrintWriter("C:\\Users\\91897\\Desktop\\Projects\\Learning_path\\RFT_JAVA_80\\JavaRegex-user-Registration\\src\\com\\bridgelabz\\regex\\sampleidresult");
-		BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\91897\\Desktop\\Projects\\Learning_path\\RFT_JAVA_80\\JavaRegex-user-Registration\\src\\com\\bridgelabz\\regex\\samplemails"));
-		String line = br.readLine();
-		while (line != null ) {
-			Matcher m = p.matcher(line);
-			if(m.find()) {
-				pw.println(m.group()+"---->Valid");
-			}
-			line = br.readLine();
+		try {
+			Pattern p = Pattern.compile(regex);
+			if (email.isEmpty())
+				throw new UserRegistrationException("Please enter valid EMAIL!",
+						UserRegistrationException.ExceptionType.INVALID_EMAIL_ID);
+			Matcher m = p.matcher(email);
+			return (m.find() && m.group().equals(email));
+		} catch (Exception e) {
+			throw new UserRegistrationException("Please enter valid EMAIL!",
+					UserRegistrationException.ExceptionType.INVALID_EMAIL_ID);
 		}
-		pw.close();
-		br.close();
+	}
+
+	public boolean userMobileNumber(String number) throws UserRegistrationException {
+		regex = "^([+])?[91]{2}[\\s]?[6-9][0-9]{9}$";
+		try {
+			Pattern p = Pattern.compile(regex);
+			if (number.isEmpty())
+				throw new UserRegistrationException("Please enter valid PHONE NUMBER!",
+						UserRegistrationException.ExceptionType.INVALID_PHONE_NUMBER);
+			Matcher m = p.matcher(number);
+			return (m.find() && m.group().equals(number));
+		} catch (Exception e) {
+			throw new UserRegistrationException("Please enter valid PHONE NUMBER!",
+					UserRegistrationException.ExceptionType.INVALID_PHONE_NUMBER);
+		}
+	}
+
+	public boolean userPassword(String password) throws UserRegistrationException {
+		regex = "(?=.*[0-9])(?=.*[A-Z])(?=.*[!@#&()–[{}]:;',?/*~$^+=<>])[a-zA-Z0-9!@#&()–[{}]:;',?/*~$^+=<>].{8,}$";
+		try {
+			Pattern p = Pattern.compile(regex);
+			if (password.isEmpty())
+				throw new UserRegistrationException("Please enter valid PASSWORD!",
+						UserRegistrationException.ExceptionType.INVALID_PASSWORD);
+			Matcher m = p.matcher(password);
+			return (m.find() && m.group().equals(password));
+		} catch (Exception e) {
+			throw new UserRegistrationException("Please enter valid PASSWORD!",
+					UserRegistrationException.ExceptionType.INVALID_PASSWORD);
+		}
 	}
 }
+
